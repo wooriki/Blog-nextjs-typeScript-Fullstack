@@ -4,6 +4,7 @@ import "./globals.css";
 import NextAuthProvider from "@/providers/next-auth-provider";
 import NextThemeProvider from "@/providers/theme-provider";
 import GlobalState from "@/context";
+import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,10 @@ export default function RootLayout({
       <body>
         <NextThemeProvider>
           <NextAuthProvider>
-            <GlobalState>{children}</GlobalState>
+            <GlobalState>
+              <Header />
+              {children}
+            </GlobalState>
           </NextAuthProvider>
         </NextThemeProvider>
       </body>
