@@ -7,9 +7,10 @@ export default function Spinner() {
     <ProgressBar
       height={"120"}
       width={"120"}
-      borderColor="#000"
       ariaLabel="Common Loader"
+      borderColor="#000"
       barColor="#fff"
+      wrapperStyle={{ display: "block", margin: "auto" }}
     />
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import Spinner from "@/components/spinner";
+import { useSession } from "next-auth/react";
 import {
   createContext,
   Dispatch,
@@ -22,6 +24,9 @@ export const GlobalCotext = createContext<ContextType>(initialState);
 
 export default function GlobalState({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(false);
+  const { data: session } = useSession();
+
+  if (session === undefined) return <Spinner />;
 
   return (
     <GlobalCotext.Provider value={{ loading, setLoading }}>

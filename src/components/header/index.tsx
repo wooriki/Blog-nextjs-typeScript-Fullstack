@@ -6,10 +6,14 @@ import { menuItems } from "../utils";
 import { MenuItems } from "../utils/types";
 import Button from "../button";
 import ThemeToggler from "../theme";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Header() {
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, serNavbarOpen] = useState<boolean>(false);
+  const { data: session } = useSession();
+
+  console.log("session", session);
 
   function handleStickyNavbar() {
     if (window.screenY >= 80) {
@@ -96,8 +100,19 @@ export default function Header() {
                 </nav>
               </div>
               <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">
-                <Button text="Create" onClick={() => {}} />
-                <Button text="Login" onClick={() => {}} />
+                {session !== null ? (
+                  <Button text="Create" onClick={() => {}} />
+                ) : null}
+                <Button
+                  text={session !== null ? "Logout" : "Login"}
+                  onClick={
+                    session !== null
+                      ? () => signOut()
+                      : () => {
+                          signIn("github");
+                        }
+                  }
+                />
                 <div className="flex gap-3 items-center">
                   <ThemeToggler />
                 </div>
