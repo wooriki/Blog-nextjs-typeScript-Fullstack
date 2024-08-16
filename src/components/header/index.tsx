@@ -2,19 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { menuItems } from "../utils";
-import { MenuItems } from "../utils/types";
+import { menuItems } from "../../utils";
+import { MenuItem } from "../../utils/types";
 import Button from "../button";
 import ThemeToggler from "../theme";
 import { signIn, signOut, useSession } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 export default function Header() {
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, serNavbarOpen] = useState<boolean>(false);
   const { data: session } = useSession();
-
+  const router = useRouter();
   console.log("session", session);
-
+  // const imgSrc =JSON.parse(sess)
   function handleStickyNavbar() {
     if (window.screenY >= 80) {
       setSticky(true);
@@ -86,7 +86,7 @@ export default function Header() {
                   }`}
                 >
                   <ul className="block lg:flex lg:space-x-12">
-                    {menuItems.map((item: MenuItems) => (
+                    {menuItems.map((item: MenuItem) => (
                       <li key={item.id} className="group relative">
                         <Link
                           href={item.path}
@@ -97,11 +97,22 @@ export default function Header() {
                       </li>
                     ))}
                   </ul>
+                  {/* <Image
+                    src={session?.user?.image || ""} // fallback URL in case session.user.image is undefined
+                    width={30}
+                    height={30}
+                    alt="User Image"
+                  /> */}
                 </nav>
               </div>
               <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">
                 {session !== null ? (
-                  <Button text="Create" onClick={() => {}} />
+                  <Button
+                    text="Create"
+                    onClick={() => {
+                      router.push("/create");
+                    }}
+                  />
                 ) : null}
                 <Button
                   text={session !== null ? "Logout" : "Login"}
