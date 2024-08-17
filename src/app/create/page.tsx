@@ -128,7 +128,7 @@ export default function Create() {
                 <div className="-mx-4 flex flex-wrap">
                   {formControls.map((control) => (
                     <div className="w-full px-4" key={control.id}>
-                      <label className="mb-6 black text-sm font-medium text-dark dark:text-white">
+                      <label className="mb-2 text-sm font-medium text-dark dark:text-white">
                         {control.label}
                       </label>
                       {control.component === "input" ? (
@@ -144,7 +144,7 @@ export default function Create() {
                             });
                           }}
                           value={formData[control.id as keyof BlogFormData]}
-                          className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                          className="w-full mt-2 mb-8 rounded-md border border-transparent py-3 px-6 text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                         />
                       ) : control.component === "textarea" ? (
                         <textarea
@@ -160,7 +160,7 @@ export default function Create() {
                             });
                           }}
                           value={formData[control.id as keyof BlogFormData]}
-                          className="w-full resize-none rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                          className="w-full mt-2 resize-none rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                         />
                       ) : control.component === "select" ? (
                         <select
@@ -174,7 +174,7 @@ export default function Create() {
                             });
                           }}
                           value={formData[control.id as keyof BlogFormData]}
-                          className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                          className="w-full mt-2 mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                         >
                           <option value={""} id="">
                             Select
