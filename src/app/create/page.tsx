@@ -13,6 +13,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 
 const app = initializeApp(firebaseConfig);
@@ -48,7 +49,7 @@ export default function Create() {
   const { formData, setFormData } = useContext(GlobalCotext);
   const [imageLoading, setImageLoading] = useState<boolean>(false);
   const { data: session } = useSession();
-
+  const router = useRouter();
   console.log("session", session);
 
   async function handleBlogImageChange(
@@ -90,6 +91,7 @@ export default function Create() {
 
     console.log(data, "data123");
     if (data && data.success) {
+      router.push("/blogs");
     }
   }
   return (
@@ -99,13 +101,13 @@ export default function Create() {
           <div className="w-full px-4">
             <div className="mb-12 rounded-md bg-primary/[3%] py-10 dark:bg-dark sm:p-[55px] lg:mb-5 lg:px-8  xl:p-[55px]">
               <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
-                Create Your Own Blog Post
+                나만의 새 글을 작성해 보세요.
               </h2>
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3">
                   <div className={`${imageLoading ? "w-1/2" : "w-full"}`}>
                     <label className="mb-3 block text-sm font-medium text-dark dark:text-white">
-                      Upload Blog Image
+                      블로그 이미지 올리기
                     </label>
                     <input
                       id="fileinput"

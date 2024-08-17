@@ -49,7 +49,7 @@ export const categories: Option[] = [
 export const formControls: FormControlItem[] = [
   {
     id: "title",
-    label: "Title",
+    label: "블로그 제목",
     placeholder: "블로그의 제목을 입력해 주세요",
     type: "text",
     component: "input",
@@ -57,7 +57,7 @@ export const formControls: FormControlItem[] = [
   },
   {
     id: "description",
-    label: "Description",
+    label: "블로그 내용",
     placeholder: "내용을 입력해 주세요",
     type: "text",
     component: "textarea",
@@ -65,7 +65,7 @@ export const formControls: FormControlItem[] = [
   },
   {
     id: "category",
-    label: "Category",
+    label: "카테고리",
     placeholder: "카테고리를 선택해 주세요",
     type: "",
     component: "select",

@@ -13,12 +13,12 @@ export async function POST(request: NextRequest) {
     if (newlyCreatedPost) {
       return NextResponse.json({
         success: true,
-        message: "New blog post added successfully",
+        message: "새 글이 성공적으로 작성되었습니다. ",
       });
     } else {
       return NextResponse.json({
         success: false,
-        message: "Something went wrong ! Please try again",
+        message: "에러가 발생했습니다. 다시 시도해 주세요.",
       });
     }
   } catch (e) {
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: false,
-      message: "Something went wrong ! Please try again",
+      message: "에러가 발생했습니다. 다시 시도해 주세요.",
     });
   }
 }
