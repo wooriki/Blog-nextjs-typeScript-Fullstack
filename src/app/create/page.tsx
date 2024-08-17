@@ -12,6 +12,7 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { useSession } from "next-auth/react";
 import { useContext, useState } from "react";
 
 const app = initializeApp(firebaseConfig);
@@ -46,6 +47,9 @@ async function handleImageSaveToFirebase(file: any) {
 export default function Create() {
   const { formData, setFormData } = useContext(GlobalCotext);
   const [imageLoading, setImageLoading] = useState<boolean>(false);
+  const { data: session } = useSession();
+
+  console.log("session", session);
 
   async function handleBlogImageChange(
     event: React.ChangeEvent<HTMLInputElement>
@@ -65,8 +69,29 @@ export default function Create() {
       });
     }
   }
-  console.log("formData", formData);
 
+  async function handleSaveBlogPost() {
+    console.log(formData);
+
+    const res = await fetch("/api/blog-post/add-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+        userid: session?.user?.name,
+        userimage: session?.user?.image,
+        comments: [],
+      }),
+    });
+
+    const data = await res.json();
+
+    console.log(data, "data123");
+    if (data && data.success) {
+    }
+  }
   return (
     <section className=" overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -166,7 +191,7 @@ export default function Create() {
                     </div>
                   ))}
                   <div className="w-full px-4">
-                    <Button text="새 글 포스팅" onClick={() => {}} />
+                    <Button text="새 글 포스팅" onClick={handleSaveBlogPost} />
                   </div>
                 </div>
               </div>
