@@ -1,17 +1,19 @@
 "use client";
 
+import SingleBlog from "@/components/blogs/single-blog";
 import Button from "@/components/button";
 import { GlobalCotext } from "@/context";
+import { Blog } from "@/utils/types";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function Search() {
   const { searchQuery, setSearchQuery, searchResults, setSearchResults } =
     useContext(GlobalCotext);
+  const router = useRouter();
 
-  async function handleSearch() {
-    console.log(searchQuery);
-
-    const res = await fetch(`/api/search?query=${searchQuery}`, {
+  async function helperFuncToFetchSearchResults(query: string) {
+    const res = await fetch(`/api/search?query=${query}`, {
       method: "GET",
       cache: "no-store",
     });
@@ -21,6 +23,21 @@ export default function Search() {
       setSearchResults(data.data);
     }
   }
+
+  async function handleSearch() {
+    helperFuncToFetchSearchResults(searchQuery);
+  }
+
+  async function handleDelete(id: number) {
+    const res = await fetch(`/api/blog-post/delete-post?id=${id}`, {
+      method: "DELETE",
+      cache: "no-store",
+    });
+
+    const data = await res.json();
+    if (data && data.success) helperFuncToFetchSearchResults(searchQuery);
+  }
+
   return (
     <section className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -53,7 +70,25 @@ export default function Search() {
             </div>
           </div>
           <section className="pt-[80px] w-full pb-[120px]">
-            <div className="container"></div>
+            <div className="container">
+              <div className="-mx-4 flex flex-wrap">
+                {searchResults && searchResults.length ? (
+                  searchResults.map((searchBlog: Blog) => (
+                    <div
+                      key={searchBlog.id}
+                      className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
+                    >
+                      <SingleBlog
+                        handleDelete={handleDelete}
+                        blogItem={searchBlog}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <h1>검색 결과가 없습니다.</h1>
+                )}
+              </div>
+            </div>
           </section>
         </div>
       </div>

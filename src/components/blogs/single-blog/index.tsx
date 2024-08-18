@@ -4,11 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaTrash } from "react-icons/fa";
 
-export default function SingleBlog({ blogItem }: { blogItem: Blog }) {
-  const { image, category, title, description, userimage, userid } = blogItem;
+export default function SingleBlog({
+  blogItem,
+  handleDelete,
+}: {
+  blogItem: Blog;
+  handleDelete: (id: number) => {};
+}) {
+  const { image, category, title, description, userimage, userid, id } =
+    blogItem;
   const { data: session } = useSession();
-
-  console.log("hin", session, userid);
 
   return (
     <div>
@@ -17,14 +22,22 @@ export default function SingleBlog({ blogItem }: { blogItem: Blog }) {
           <span className="absolute top-6 right-6 z-20 inline-center justify-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
             {category}
           </span>
-          <Image src={image} alt="Blog Post" fill />
+          <Image
+            src={image}
+            alt="Blog Post"
+            fill
+            sizes="(max-width: 768px) 100vw, 
+         (max-width: 1200px) 50vw, 
+         33vw"
+            priority
+          />
         </Link>
-      </div>{" "}
+      </div>
       <div className="p-6 sm:-8 md:py-8 mb:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
         <h3>
           <Link
-            href={"/"}
-            className="mb-4 text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black hover:text-primary dark:text-dark dark:hover:text-primary sm:text-2xl"
+            className="mb-4 text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
+            href={`/blogs/${id}`}
           >
             {title}
           </Link>
@@ -36,7 +49,15 @@ export default function SingleBlog({ blogItem }: { blogItem: Blog }) {
           <div className=" flex items-center xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
             <div className="mr-4">
               <div className="h-10 relative w-10 overflow-hidden rounded-full">
-                <Image alt="Author" fill src={userimage} />
+                <Image
+                  alt="Author"
+                  fill
+                  src={userimage}
+                  sizes="(max-width: 768px) 100vw, 
+         (max-width: 1200px) 50vw, 
+         33vw"
+                  priority
+                />
               </div>
             </div>
             <div className="flex flex-col">
@@ -49,7 +70,11 @@ export default function SingleBlog({ blogItem }: { blogItem: Blog }) {
             </div>
             <div>
               {session !== null && session?.user?.name === userid ? (
-                <FaTrash size={20} className="cursor-pointer" />
+                <FaTrash
+                  size={20}
+                  className="cursor-pointer"
+                  onClick={() => handleDelete(id)}
+                />
               ) : null}
             </div>
           </div>

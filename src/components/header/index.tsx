@@ -1,19 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { menuItems } from "../../utils";
 import { MenuItem } from "../../utils/types";
 import Button from "../button";
 import ThemeToggler from "../theme";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { GlobalCotext } from "@/context";
 export default function Header() {
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, serNavbarOpen] = useState<boolean>(false);
   const { data: session } = useSession();
+  const { setSearchQuery, setSearchResults } = useContext(GlobalCotext);
   const router = useRouter();
-  console.log("session", session);
+  const pathName = usePathname();
   // const imgSrc =JSON.parse(sess)
   function handleStickyNavbar() {
     if (window.screenY >= 80) {
@@ -29,6 +31,10 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
   }, []);
+  useEffect(() => {
+    setSearchResults([]);
+    setSearchQuery("");
+  }, [pathName]);
 
   return (
     <div>

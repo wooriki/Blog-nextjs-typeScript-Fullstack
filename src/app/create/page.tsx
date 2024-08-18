@@ -3,7 +3,7 @@
 import Button from "@/components/button";
 import Spinner from "@/components/spinner";
 import { GlobalCotext } from "@/context";
-import { firebaseConfig, formControls } from "@/utils";
+import { firebaseConfig, formControls, initialBlogFormData } from "@/utils";
 import { BlogFormData } from "@/utils/types";
 import { initializeApp } from "firebase/app";
 import {
@@ -91,9 +91,11 @@ export default function Create() {
 
     console.log(data, "data123");
     if (data && data.success) {
+      setFormData(initialBlogFormData);
       router.push("/blogs");
     }
   }
+
   return (
     <section className=" overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">

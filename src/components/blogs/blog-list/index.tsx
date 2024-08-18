@@ -7,9 +7,23 @@ import { useRouter } from "next/navigation";
 
 export default function BlogList({ lists }: { lists: Blog[] }) {
   const router = useRouter();
+
   useEffect(() => {
     router.refresh();
   }, []);
+
+  async function handleDelete(id: number) {
+    const res = await fetch(`/api/blog-post/delete-post?id=${id}`, {
+      method: "DELETE",
+      cache: "no-store",
+    });
+
+    const data = await res.json();
+    if (data && data.success) {
+      return router.refresh();
+    }
+  }
+
   return (
     <section className="pt-[120px] pb-[120px]">
       <div className="container">
@@ -17,7 +31,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
           {lists && lists.length
             ? lists.map((listItem: Blog) => (
                 <div key={listItem.id} className="px-4">
-                  <SingleBlog blogItem={listItem} />
+                  <SingleBlog handleDelete={handleDelete} blogItem={listItem} />
                 </div>
               ))
             : null}
