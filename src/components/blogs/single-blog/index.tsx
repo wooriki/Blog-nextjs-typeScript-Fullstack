@@ -18,7 +18,7 @@ export default function SingleBlog({
   return (
     <div>
       <div className="relative overflow-hidden rounded-md bg-white shadow-one dark dark:bg-dark">
-        <Link className="relative block h-[250px] w-full" href={"/"}>
+        <Link className="relative block h-[250px] w-full" href={`/blogs/${id}`}>
           <span className="absolute top-6 right-6 z-20 inline-center justify-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
             {category}
           </span>

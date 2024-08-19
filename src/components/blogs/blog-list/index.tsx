@@ -20,7 +20,8 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
 
     const data = await res.json();
     if (data && data.success) {
-      return router.refresh();
+      alert(`${id} 포스트가 삭제되었습니다.`);
+      router.refresh();
     }
   }
 

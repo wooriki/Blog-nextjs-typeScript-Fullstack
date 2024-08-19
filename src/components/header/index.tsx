@@ -53,17 +53,17 @@ export default function Header() {
             <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link
                 href={"/"}
-                className={` text-[30px] font-extrabold cursor-pointer flex w-full ${
+                className={` text-[30px] font-extrabold cursor-pointer flex gap-2 w-full ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 }`}
               >
                 <Image
-                  src={`/icon/B-icon.png`}
+                  src="/icon/B-icon.png"
                   alt="Bicon"
+                  priority
                   width={30}
                   height={30}
-                  priority
-                  style={{ marginRight: "4px" }}
+                  className="w-auto h-auto"
                 />
                 log
               </Link>
