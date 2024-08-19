@@ -8,7 +8,7 @@ export default function Spinner() {
       height={"120"}
       width={"120"}
       ariaLabel="Common Loader"
-      borderColor="#000"
+      borderColor="#0000"
       barColor="#fff"
       wrapperStyle={{ display: "block", margin: "auto" }}
     />
