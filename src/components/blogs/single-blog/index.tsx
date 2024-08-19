@@ -46,7 +46,7 @@ export default function SingleBlog({
           {description}
         </p>
         <div className=" flex items-center justify-between">
-          <div className=" flex items-center xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
+          <div className=" flex relative items-center xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
             <div className="mr-4">
               <div className="h-10 relative w-10 overflow-hidden rounded-full">
                 <Image
@@ -68,10 +68,10 @@ export default function SingleBlog({
                 {userid.split("_")[0].toUpperCase()}
               </p>
             </div>
-            <div>
+            <div className="absolute bottom-0 right-[-12px]  p-2">
               {session !== null && session?.user?.name === userid ? (
                 <FaTrash
-                  size={20}
+                  size={16}
                   className="cursor-pointer"
                   onClick={() => handleDelete(id)}
                 />

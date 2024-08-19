@@ -9,6 +9,7 @@ import ThemeToggler from "../theme";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { GlobalCotext } from "@/context";
+import Image from "next/image";
 export default function Header() {
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, serNavbarOpen] = useState<boolean>(false);
@@ -16,7 +17,7 @@ export default function Header() {
   const { setSearchQuery, setSearchResults } = useContext(GlobalCotext);
   const router = useRouter();
   const pathName = usePathname();
-  // const imgSrc =JSON.parse(sess)
+
   function handleStickyNavbar() {
     if (window.screenY >= 80) {
       setSticky(true);
@@ -39,7 +40,7 @@ export default function Header() {
   return (
     <div>
       <header
-        className={`top-0 left-0 flex w-full items-center bg-transparent
+        className={`top-0 left-0 z-30 flex w-full items-center bg-transparent
             ${
               sticky
                 ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop:blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
@@ -52,11 +53,19 @@ export default function Header() {
             <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link
                 href={"/"}
-                className={`text-[30px] font-extrabold cursor-pointer block w-full ${
+                className={` text-[30px] font-extrabold cursor-pointer flex w-full ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 }`}
               >
-                Conlog
+                <Image
+                  src={`/icon/B-icon.png`}
+                  alt="Bicon"
+                  width={30}
+                  height={30}
+                  priority
+                  style={{ marginRight: "4px" }}
+                />
+                log
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
@@ -103,12 +112,6 @@ export default function Header() {
                       </li>
                     ))}
                   </ul>
-                  {/* <Image
-                    src={session?.user?.image || ""} // fallback URL in case session.user.image is undefined
-                    width={30}
-                    height={30}
-                    alt="User Image"
-                  /> */}
                 </nav>
               </div>
               <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">

@@ -4,6 +4,7 @@ import Spinner from "@/components/spinner";
 import { initialBlogFormData } from "@/utils";
 import { Blog, BlogFormData } from "@/utils/types";
 import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
   Dispatch,
@@ -41,11 +42,12 @@ export default function GlobalState({ children }: { children: ReactNode }) {
   const [formData, setFormData] = useState(initialBlogFormData);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Blog[]>([]);
-
+  const pathName = usePathname();
+  const router = useRouter();
   const { data: session } = useSession();
 
   if (session === undefined) return <Spinner />;
-
+  if (session === null && pathName === "/create") router.push("/");
   return (
     <GlobalCotext.Provider
       value={{

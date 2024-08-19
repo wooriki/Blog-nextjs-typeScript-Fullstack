@@ -83,7 +83,9 @@ export default function Search() {
                     </div>
                   ))
                 ) : (
-                  <h1 className="pl-12">검색 결과가 없습니다.</h1>
+                  <div className="w-full flex justify-center items-center">
+                    <h1 className="text-center">검색 결과가 없습니다.</h1>
+                  </div>
                 )}
               </div>
             </div>
