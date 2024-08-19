@@ -4,13 +4,11 @@ import SingleBlog from "@/components/blogs/single-blog";
 import Button from "@/components/button";
 import { GlobalCotext } from "@/context";
 import { Blog } from "@/utils/types";
-import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function Search() {
   const { searchQuery, setSearchQuery, searchResults, setSearchResults } =
     useContext(GlobalCotext);
-  const router = useRouter();
 
   async function helperFuncToFetchSearchResults(query: string) {
     const res = await fetch(`/api/search?query=${query}`, {
@@ -85,7 +83,7 @@ export default function Search() {
                     </div>
                   ))
                 ) : (
-                  <h1>검색 결과가 없습니다.</h1>
+                  <h1 className="pl-12">검색 결과가 없습니다.</h1>
                 )}
               </div>
             </div>
