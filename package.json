@@ -8,10 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
-  
-    "prisma" : {
-      "seed" : "ts-node --compuler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-    },
+  "prisma": {
+    "seed": "ts-node --compuler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "firebase": "^10.12.5",
