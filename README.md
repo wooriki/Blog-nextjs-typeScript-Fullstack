@@ -45,6 +45,8 @@ Prisma ORM을 사용해 PostgreSQL 데이터베이스와 연결되며 데이터�
   - **Prisma ORM:** PostgreSQL 데이터베이스와의 상호작용을 관리하며, 강력한 타입 안전성을 제공합니다.
 
 ## Captures
+<details>
+  <summary>펼칠 시 캡쳐 이미지</summary>
 <img width="1901" alt="스크린샷 2024-08-20 오후 9 58 19" src="https://github.com/user-attachments/assets/9dc2da55-827a-4eea-818c-24f17b2b04bd">
 <img width="1874" alt="스크린샷 2024-08-20 오후 9 58 36" src="https://github.com/user-attachments/assets/0641d849-1e47-4de8-aada-27e924d80bd2">
 <img width="1069" alt="스크린샷 2024-08-20 오후 9 58 54" src="https://github.com/user-attachments/assets/6d9b0e68-43f6-4fa3-ac7f-51a3a58f4738">
@@ -53,13 +55,14 @@ Prisma ORM을 사용해 PostgreSQL 데이터베이스와 연결되며 데이터�
 <img width="1878" alt="스크린샷 2024-08-20 오후 9 59 47" src="https://github.com/user-attachments/assets/91b2bb19-c56d-42ce-8a7b-a98df0a71865">
 <img width="1880" alt="스크린샷 2024-08-20 오후 10 01 00" src="https://github.com/user-attachments/assets/954af22a-bf67-43a5-8a06-0d54bb71a14a">
 <img width="1857" alt="스크린샷 2024-08-20 오후 10 01 17" src="https://github.com/user-attachments/assets/928769f4-c0ad-455e-8080-ca5b44eafa40">
+<img width="2080" alt="스크린샷 2024-08-21 오전 1 11 36" src="https://github.com/user-attachments/assets/4f928bbc-4cb6-4d44-a799-61b30d5cf9ac">
 
 ### Theme 모드와 반응형
 
 <img width="1890" alt="스크린샷 2024-08-20 오후 10 01 38" src="https://github.com/user-attachments/assets/e010c0ac-05c0-450d-b906-9b4f102d8931">
 <img width="1106" alt="스크린샷 2024-08-20 오후 10 03 16" src="https://github.com/user-attachments/assets/039de108-7dec-4cc1-a760-7dd41cadb8b1">
 <img width="676" alt="스크린샷 2024-08-20 오후 10 04 18" src="https://github.com/user-attachments/assets/1024de99-bdc7-4d1e-84e0-2d562cfe31a3"><img width="671" alt="스크린샷 2024-08-20 오후 10 04 42" src="https://github.com/user-attachments/assets/0facecee-972c-498c-a0f2-0a62363bb961">
-
+</details>
 
 
 
