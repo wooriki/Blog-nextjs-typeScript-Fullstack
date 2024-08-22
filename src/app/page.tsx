@@ -1,6 +1,5 @@
 "use client";
 
-import prisma from "@/database";
 import Link from "next/link";
 
 export default function Home() {

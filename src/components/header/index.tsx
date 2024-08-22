@@ -10,16 +10,18 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { GlobalCotext } from "@/context";
 import Image from "next/image";
+
 export default function Header() {
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, serNavbarOpen] = useState<boolean>(false);
-  const { data: session } = useSession();
   const { setSearchQuery, setSearchResults } = useContext(GlobalCotext);
+
+  const { data: session } = useSession();
   const router = useRouter();
   const pathName = usePathname();
 
   function handleStickyNavbar() {
-    if (window.screenY >= 80) {
+    if (window.scrollY >= 80) {
       setSticky(true);
     } else {
       setSticky(false);
@@ -29,9 +31,11 @@ export default function Header() {
   function handleNavbarToggle() {
     serNavbarOpen(!navbarOpen);
   }
+
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
   }, []);
+
   useEffect(() => {
     setSearchResults([]);
     setSearchQuery("");
@@ -78,7 +82,7 @@ export default function Header() {
                 >
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "top-7px rotate-45" : ""
+                      navbarOpen ? "top-7px rotate-45 w-[18px] ml-2" : ""
                     }`}
                   />
                   <span
@@ -88,7 +92,7 @@ export default function Header() {
                   />
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "top-8px -rotate-45" : ""
+                      navbarOpen ? "top-8px -rotate-45 w-[18px] ml-2" : ""
                     }`}
                   />
                 </button>

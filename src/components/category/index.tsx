@@ -19,6 +19,7 @@ export default function CategoryList({ list }: { list: Blog[] }) {
 
   const relatedBlogs =
     list && list.length ? list.filter((item) => item.id !== getMxId) : [];
+  console.log(relatedBlogs);
 
   return (
     <section className="overflow-hidden pt-[180px] pb-[120px]">
@@ -107,7 +108,7 @@ export default function CategoryList({ list }: { list: Blog[] }) {
                         <div className="w-full">
                           <h5>
                             <Link
-                              href={"/"}
+                              href={`/blogs/${item.id}`}
                               className="mb-[8px] block text-base font-medium text-black dark:text-white hover:text-primary dark:hover:text-primary"
                             >
                               {item.title}

@@ -13,6 +13,7 @@ export default function BlogDetailsHome({ blogData }: { blogData: Blog }) {
   const { data: session } = useSession();
 
   const router = useRouter();
+
   async function handleCommentSave() {
     let extractComments = [...blogData.comments];
 

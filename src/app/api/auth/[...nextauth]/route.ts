@@ -1,4 +1,3 @@
-import { log } from "console";
 import { AuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GithubProvider from "next-auth/providers/github";
@@ -11,7 +10,7 @@ const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }: any) {
+    session({ session, token }: any) {
       console.log("here!", session, token);
 
       session.user.name = `${session?.user?.name}_${token?.sub}`;

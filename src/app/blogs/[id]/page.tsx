@@ -1,7 +1,6 @@
 // 'use client'
 
 import BlogDetailsHome from "@/components/blogs/blog-details";
-import { useParams } from "next/navigation";
 
 interface Params {
   id: string;

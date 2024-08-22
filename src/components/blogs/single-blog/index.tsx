@@ -68,7 +68,7 @@ export default function SingleBlog({
                 {userid.split("_")[0].toUpperCase()}
               </p>
             </div>
-            <div className="absolute bottom-0 right-[-12px]  p-2">
+            <div className="absolute bottom-0 right-[-12px] pl-8 pb-2 lg:p-2">
               {session !== null && session?.user?.name === userid ? (
                 <FaTrash
                   size={16}

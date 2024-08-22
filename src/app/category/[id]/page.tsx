@@ -19,7 +19,6 @@ export default async function Category({ params }: { params: any }) {
 
   return (
     <div>
-      {" "}
       <CategoryList list={getAllList} />
     </div>
   );
