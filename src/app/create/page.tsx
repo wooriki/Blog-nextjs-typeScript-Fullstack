@@ -70,8 +70,18 @@ export default function Create() {
       });
     }
   }
+  function areFieldsFilled() {
+    return Object.values(formData).every(
+      (field) => field !== null && field !== ""
+    );
+  }
 
   async function handleSaveBlogPost() {
+    if (!areFieldsFilled()) {
+      alert("모든 필드를 입력해 주세요.");
+      return;
+    }
+
     console.log(formData);
 
     const res = await fetch("/api/blog-post/add-post", {
@@ -129,7 +139,7 @@ export default function Create() {
 
                 <div className="-mx-4 flex flex-wrap">
                   {formControls.map((control) => (
-                    <div className="w-full px-4" key={control.id}>
+                    <div className="w-full px-4">
                       <label className="mb-2 text-sm font-medium text-dark dark:text-white">
                         {control.label}
                       </label>
@@ -176,10 +186,10 @@ export default function Create() {
                             });
                           }}
                           value={formData[control.id as keyof BlogFormData]}
-                          className="w-full mt-2 mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                          className="w-full mt-2 mb-8 rounded-md border border-transparent py-3 px-6  text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                         >
                           <option value={""} id="">
-                            Select
+                            카테고리 선택
                           </option>
                           {control.options.map((optionItem, index) => (
                             <option

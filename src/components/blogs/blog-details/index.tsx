@@ -27,7 +27,7 @@ export default function BlogDetailsHome({ blogData }: { blogData: Blog }) {
       body: JSON.stringify({ id: blogData?.id, comments: extractComments }),
     });
     const data = await response.json();
-    console.log(data, "here is the comments ");
+    console.log(data.body, "here is the comments ");
     if (data && data.success) {
       setComment("");
       router.refresh();
